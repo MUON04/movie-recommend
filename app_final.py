@@ -433,7 +433,7 @@ def choose_ai(providers, answers, excluded, count=5, min_count=None):
             errors.append("AI:budget")
             break
         if index and attempts[index - 1][0] == provider:
-            time.sleep(min(1, remaining))
+            time.sleep(min(4 * (2 ** (index - 1)), remaining))
             remaining = deadline - time.monotonic()
             if remaining <= 0:
                 errors.append("AI:budget")
